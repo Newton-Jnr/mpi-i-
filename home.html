@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=100%, initial-scale=1.0">
+    <link rel="stylesheet" href="homestyle.css">
+    <title>mpi.com/home</title>
+</head>
+<body>
+    <div class="main">
+        <div class="headbox">
+            <div class="logo">
+                <img src="logo.jpg" alt="">
+            </div>
+            <div class="headname">
+                <h2><kbd>MeTOC</kbd></h2>
+            </div>
+        </div>
+        <fieldset class="field">
+        <div class="alarm">
+            <fieldset class="field1">
+                <legend>
+                    <button class="alrm" id="alarm">ALARM</button>
+                    <button class="urgent" id="urgent">URGENT</button>
+                    <button class="normal" id="normal">NORMAL</button>
+                </legend>
+                <table><tr>
+                <th class="thh">ALARMS</th>
+                <th>STATUS</th></tr>
+                        <tbody id="alarm-list">
+                            <tr>
+                            <td><ul><label for="comercial">Mains fail</label></ul></td>
+                            <td><ul><input type="checkbox" class="checkbox urgent" name="power" data-category="urgent"></ul></td>
+                          </tr>
+                          <tr>
+                            <td><ul><label for="comercial">Generator running</label></ul></td>
+                            <td><ul><input type="checkbox" class="checkbox normal" name="power" data-category="urgent"></ul></td>
+                          </tr>
+                          <tr>
+                            <td><ul><label for="comercial">Site on battery</label></ul></td>
+                            <td><ul><input type="checkbox" class="checkbox urgent" name="power" data-category="urgent"></ul></td>
+                          </tr>
+                          <tr>
+                            <td><ul><label for="comercial">Low fuel level</label></ul></td>
+                            <td><ul><input type="checkbox" class="checkbox normal" name="power" data-category="normal"></ul></td>
+                          </tr>
+                          <tr>
+                            <td><ul><label for="comercial">DG not in auto mode</label></ul></td>
+                            <td><ul><input type="checkbox" class="checkbox urgent" name="power" data-category="normal"></ul></td>
+                          </tr>
+                    </tbody>
+                </table>
+            </fieldset>
+        </div>
+        <div class="tab">
+            <fieldset class="field2">
+                <legend >POWER SOURCE</legend>
+            <table>
+                
+                    <tbody>
+                        <tr>
+                            <td><ul><label for="comercial">Comercial power</label> </ul></td>
+                            <td><ul><input type="radio" class="radio" name="power"></ul></td>
+                        </tr>
+                        <tr>
+                            <td><ul><label for="generator">Generator</label></ul></td>
+                            <td><ul><input type="radio" id="generator" class="radio" name="power"></ul></td>
+                        </tr>
+                        <tr>
+                            <td><ul><label for="battery">Battery</label></ul></td>
+                            <td><ul><input type="radio" id="batterry" class="radio" name="power"></ul></td>
+                        </tr>  
+                    </tbody>
+            </table></fieldset>
+        </fieldset>
+  
+        </div>
+
+ <script src="home.js"></script> 
+            
+</body>
+</html>

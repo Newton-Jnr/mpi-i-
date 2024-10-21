@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=100%, initial-scale=1.0">
+    <link rel="stylesheet" href="homestyle.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main">
+        <div class="headbox">
+            <div class="logo">
+                <img src="logo.jpg" alt="">
+            </div>
+            <div class="headname">
+                <h2><kbd>MeTOC</kbd></h2>
+            </div>
+        </div>
+        <div class="alarm">
+            <fieldset class="field1">
+                <legend>
+                    <button class="alrm" id="alarm">ALARM</button>
+                    <button class="urgent" id="urgent">URGENT</button>
+                    <button class="normal">NORMAL</button>
+                </legend>
+                <table>
+                        <tbody><tr>
+                        <td><ul><label for="comercial">Mains fail</label> </ul></td>   
+                         <td><ul><input type="checkbox" id="comercial" class="checkbox" name="power"></ul></td>
+                        <tr>
+                        <td><ul><label for="comercial">Generator running</label> </ul></td>
+                        <td><ul><input type="checkbox" id="comercial" class="checkbox" name="power"></ul></td>
+                        </tr>
+                        <tr>
+                            <td><ul><label for="comercial">Site on battery</label> </ul></td>
+                            <td><ul><input type="checkbox" id="comercial" class="checkbox" name="power"></ul></td>
+                        </tr>
+                        <tr>
+                            <td><ul><label for="comercial">Low fuel level</label> </ul></td>
+                            <td><ul><input type="checkbox" id="comercial" class="checkbox" name="power"></ul></td>
+                        </tr>
+                        <tr>
+                            <td><ul><label for="comercial">DG not in auto mode</label> </ul></td>
+                            <td><ul><input type="checkbox" id="comercial" class="checkbox" name="power"></ul></td>
+                        </tr>
+                       
+                    </tbody>
+                </table>
+            </fieldset>
+        </div>
+        <div class="tab">
+            <fieldset class="field2">
+                <legend >POWER SOURCE</legend>
+            <table>
+                
+                    <tbody>
+                        <tr>
+                            <td><ul><label for="comercial">Comercial power</label> </ul></td>
+                            <td><ul><input type="radio" id="comercial" class="radio" name="power"></ul></td>
+                        </tr>
+                        <tr>
+                            <td><ul><label for="generator">Generator</label></ul></td>
+                            <td><ul><input type="radio" id="generator" class="radio" name="power"></ul></td>
+                        </tr>
+                        <tr>
+                            <td><ul><label for="battery">Battery</label></ul></td>
+                            <td><ul><input type="radio" id="batterry" class="radio" name="power"></ul></td>
+                        </tr>  
+                    </tbody>
+            </table></fieldset>
+  
+        </div>
+
+ <script>
+    document.getElementById("alarm").addEventListener("click", function() {
+        // Update checkboxes or table rows for ALARM state
+        var checkboxes = document.getElementsByClassName("checkbox");
+        for (var i = 0; i < checkboxes.length; i++) {
+          checkboxes[i].checked = true;
+        }
+      });
+      
+      document.getElementById("urgent").addEventListener("click", function() {
+        // Update checkboxes or table rows for URGENT state
+        var checkboxes = document.getElementsByClassName("checkbox");
+        for (var i = 0; i < checkboxes.length; i++) {
+          checkboxes[i].checked = false;
+        }
+      });
+      
+      document.getElementById("normal").addEventListener("click", function() {
+        // Update checkboxes or table rows for NORMAL state
+        var checkboxes = document.getElementsByClassName("checkbox");
+        for (var i = 0; i < checkboxes.length; i++) {
+          checkboxes[i].checked = false;
+        }
+      });
+      
+      
+ </script>
+            
+</body>
+</html>
+
+// Get the form and input fields
+const form = document.getElementById('login-form');
+const usernameInput = document.getElementById('username');
+const passwordInput = document.getElementById('password');
+const submitBtn = document.getElementById('submit-btn');
+
+// Add event listener to submit button
+submitBtn.addEventListener('click', (e) => {
+    // Prevent default form submission
+    e.preventDefault();
+    // Basic validation
+    if (usernameInput.value.trim() === 'ASIEDU' && passwordInput.value.trim() === '1234'  || usernameInput.value.trim() === 'asiedu' && passwordInput.value.trim() === '2222' ) {
+        window.location.href = 'home.html';
+        console.log('correct information')
+    }else{
+        alert('wrong credentials');
+        console.log('wrong credentials')
+    }
+        return;
+    });

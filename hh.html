@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <fieldset class="field1">
+        <legend>
+          <button class="alrm" id="alarm">ALARM</button>
+          <button class="urgent" id="urgent">URGENT</button>
+          <button class="normal" id="normal">NORMAL</button>
+        </legend>
+        <table>
+          <tbody id="alarm-list">
+            <tr>
+              <td><ul><label for="comercial">Mains fail</label></ul></td>
+              <td><ul><input type="checkbox" class="checkbox urgent" name="power" data-category="urgent"></ul></td>
+            </tr>
+            <tr>
+              <td><ul><label for="comercial">Generator running</label></ul></td>
+              <td><ul><input type="checkbox" class="checkbox normal" name="power" data-category="normal"></ul></td>
+            </tr>
+            <tr>
+              <td><ul><label for="comercial">Site on battery</label></ul></td>
+              <td><ul><input type="checkbox" class="checkbox urgent" name="power" data-category="urgent"></ul></td>
+            </tr>
+            <tr>
+              <td><ul><label for="comercial">Low fuel level</label></ul></td>
+              <td><ul><input type="checkbox" class="checkbox normal" name="power" data-category="normal"></ul></td>
+            </tr>
+            <tr>
+              <td><ul><label for="comercial">DG not in auto mode</label></ul></td>
+              <td><ul><input type="checkbox" class="checkbox urgent" name="power" data-category="urgent"></ul></td>
+            </tr>
+          </tbody>
+        </table>
+      </fieldset>
+      
+      <!-- <script>
+        document.getElementById("alarm").addEventListener("click", function() {
+            var rows = document.querySelectorAll("#alarm-list tr");
+            rows.forEach(function(row) {
+              row.style.display = "table-row";
+            });
+          });
+          
+        document.getElementById("urgent").addEventListener("click", function() {
+          var rows = document.querySelectorAll("#alarm-list tr");
+          rows.forEach(function(row) {
+            var checkbox = row.querySelector(".checkbox");
+            if (checkbox.dataset.category === "urgent") {
+              row.style.display = "table-row";
+            } else {
+              row.style.display = "none";
+            }
+          });
+        });
+      
+        document.getElementById("normal").addEventListener("click", function() {
+          var rows = document.querySelectorAll("#alarm-list tr");
+          rows.forEach(function(row) {
+            var checkbox = row.querySelector(".checkbox");
+            if (checkbox.dataset.category === "normal") {
+              row.style.display = "table-row";
+            } else {
+              row.style.display = "none";
+            }
+          });
+        });
+      </script> -->
+      <script src="home.js"></script>
+
+</body>
+</html>

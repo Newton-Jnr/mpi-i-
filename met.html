@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=100%, initial-scale=1.0">
+    <link rel="stylesheet" href="mpistyle.css">
+    <title>mpi.com/login/</title>
+</head>
+<body>
+    <div class="main">
+        <div class="headbox">
+            <div class="logo">
+                <img src="logo.jpg" alt="">
+            </div> 
+            <div class="headname">
+              <h2>MET ENGINEERS MONITORING WEBPAGE</h2>
+            </div>
+        </div>
+        <div class="login">
+          <h3>Get Ahead of Outages: Login for Preventive Alerts</h3>      
+        </div>
+
+        <form id="login-form" class="data">
+            <h1 class="details">ENTER CREDENTIALS HERE <hr></h1>
+            <div class="username">
+                <h3 class="use">USERNAME:
+                <input type="text" id="username" name="text" maxlength="25" class="user"></h3>
+            </div>
+            <div class="password">
+                <h3 class="use">PASSWORD:
+                <input type="password" id="password" name="password" maxlength="25" class="pass"></h3>
+            </div>
+            <div class="button">
+                <button type="submit" id="submit-btn" class="bb">LOG IN</button>
+            </div>
+        </form>
+        <div class="tagline">
+            <p>Ensure business continuity <br> Minimize the risk of outages <br> 
+                With MET ENGINEER's real-time monitoring website<br>
+                And instant phone notifications <br>
+                For prompt issue resolution</p>
+        </div>
+        
+        <div class="cpy">
+            <footer><hr><kbd>Copyright &copy; 2024 MET ENGINEERS. All Rights Reserved.
+                 </kbd></footer>
+        </div>
+    </div>
+    <script>
+        const users = {
+            "aaaa": "1111",
+            "ffff": "2222",
+            "ssss": "3333"
+          };
+          
+        const loginForm = document.getElementById("login-form");
+
+loginForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const username = document.getElementById('username').value;
+  const password = document.getElementById('password').value;
+
+  if (users[username] && users[username] === password) {
+    window.location.href = "home.html";
+  } else {
+    alert("Invalid username or password");
+  }
+});
+
+    </script>
+    
+    
+</body>
+</html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .dashboard {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+          }
+          
+          .kpi-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+          }
+          
+          .kpi {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          }
+          
+          .kpi h2 {
+            margin-top: 0;
+          }
+          
+          .kpi p {
+            font-size: 24px;
+            font-weight: bold;
+          }   
+          
+          .alarm-list {
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          }
+          
+          .alarm-list table {
+            width: 100%;
+            border-collapse: collapse;
+          }
+          
+          .alarm-list th, .alarm-list td {
+            border: 1px solid #f3beef;
+            padding: 10px;
+            text-align: left;
+          }
+          
+          .alarm-list th {
+            background-color: #f1c2f3;
+          }
+          
+          .urgency-checkbox {
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border: none;
+            background-color: yellow;
+            border-radius: 30%;
+            cursor: pointer;
+          }
+          
+          .urgency-checkbox:checked {
+            background-color: yellow; /* Red for Urgent */
+          }
+          .urgency-checkbox:checked.urgent {
+            background-color: #ff0000; /* Red for Urgent */
+            animation: blink 1s infinite;
+          }
+          @keyframes blink {
+            0% {
+                background-color: red;
+                        }
+            50% {
+              background-color: yellow;
+            }
+            100% {
+              background-color: red;
+            }
+          }
+
+          #search-filter {
+            position: absolute;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            width: 200px; /* Adjust the width as needed */
+          }
+          
+          #search-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+          }
+
+          .urgency-checkbox.normal:checked.urgent {
+            background-color: red; /* Yellow for Normal */
+          }
+          
+          .urgency-checkbox.delay:checked.low {
+            background-color: #00ff00; /* Green for Delay (not black) */
+          }
+          
+          
+                    
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="kpi-container">
+          <div class="kpi">
+            <h2>Online Sites</h2>
+            <p id="online-sites">0</p>
+          </div>
+          <div class="kpi">
+            <h2>Offline Sites</h2>
+            <p id="offline-sites">0</p>
+          </div>
+          <div class="kpi">
+            <h2>Network Availability</h2>
+            <p id="network-availability">0%</p>
+          </div>
+        </div>
+      </div>
+      <!-- Search button -->
+<label id="search-btn">Search</label>
+
+<!-- Search filter div (hidden initially) -->
+<div id="search-filter" style="display: none;">
+  <input type="text" id="search-input" placeholder="Search...">
+  <!-- Add your filter options here, e.g., checkboxes, dropdowns, etc. -->
+</div>
+
+
+      <div class="alarm-list">
+        <h2>Alarm List</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Site Name</th>
+              <th>Alarm Description</th>
+              <th>Severity</th>
+              <th>Time of Occurrence</th>
+              <th>Urgency</th>
+            </tr>
+          </thead>
+          <tbody id="alarm-list-table">
+            <!-- Alarm list will be populated here -->
+          </tbody>
+        </table>
+      </div>
+      
+      
+      
+      <script>
+        const searchBtn = document.getElementById('search-btn');
+        const searchFilter = document.getElementById('search-filter');
+        
+        // Add event listener to the search button
+        searchBtn.addEventListener('click', () => {
+          // Toggle the display of the search filter div
+          searchFilter.style.display = searchFilter.style.display === 'none' ? 'block' : 'none';
+        });
+
+        // Sample data for demonstration purposes
+const sites = [
+{ name: "Site 1", status: "online" },
+{ name: "Site 2", status: "online" },
+{ name: "Site 3", status: "online" },
+// Add more sites here...
+];
+
+const onlineSites = sites.filter((site) => site.status === "online").length;
+const offlineSites = sites.length - onlineSites;
+const networkAvailability = ((onlineSites / sites.length) * 100).toFixed(2);
+
+document.getElementById("online-sites").innerText = onlineSites;
+document.getElementById("offline-sites").innerText = offlineSites;
+document.getElementById("network-availability").innerText = `${networkAvailability}%`;
+
+// Sample alarm data
+const alarms = [
+  {
+    siteName: "Site 1",
+    alarmDescription: "Power failure",
+    severity: "Critical",
+    timeOfOccurrence: "2023-08-31 14:30:00",
+  },
+  {
+    siteName: "Site 2",
+    alarmDescription: "Network outage",
+    severity: "Major",
+    timeOfOccurrence: "2023-08-31 15:45:00",
+  },
+  // Add more alarms here...
+];
+
+// Populate alarm list table
+alarms.forEach((alarm) => {
+    let urgency = '';
+    if (alarm.severity === 'Critical') {
+      urgency = 'urgent';
+    } else if (alarm.severity === 'Major') {
+      urgency = 'normal';
+    } else {
+      urgency = 'delay'; // or any other default value
+    }
+    const row = document.createElement("tr");
+    row.innerHTML = `
+      <td>${alarm.siteName}</td>
+      <td>${alarm.alarmDescription}</td>
+      <td>${alarm.severity}</td>
+      <td>${alarm.timeOfOccurrence}</td>
+      <td>
+<input type="checkbox" class="urgency-checkbox normal" checked></td>
+<input type="checkbox" class="urgency-checkbox urgent" checked>
+    </td>
+        
+`;
+
+
+    document.getElementById("alarm-list-table").appendChild(row);
+    // Get the search button and filter div elements
+
+
+  });
+  
+      </script>
+</body>
+</html>
